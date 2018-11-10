@@ -2,6 +2,7 @@ import os
 from PIL import Image
 from random import shuffle
 import twitter
+from threading import Thread
 import RPi.GPIO as GPIO
 import json
 import sys
@@ -18,6 +19,9 @@ def main():
             print("WOW")
             time.sleep(2)
             takePhotos();
+
+def send(n):
+    twitter.postPhoto("out.jpg", "#GreatUniHack #GUH18", n)
 
 photoNumber = 0
 def takePhotos():
@@ -50,7 +54,10 @@ def takePhotos():
     out.thumbnail((1920, 1080), Image.ANTIALIAS)
     out.save("out.jpg")
 
-    twitter.postPhoto("out.jpg", "#GreatUniHack #GUH18", n)
+    thread = Thread(target = send, args = (n, ))
+    thread.start()
+
+    send(n)
 
     photoNumber += 1
     
