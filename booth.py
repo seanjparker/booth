@@ -58,7 +58,7 @@ def takePhotos():
     thread = Thread(target = send, args = (n, ))
     thread.start()
 
-    send(n)
+    # send(n)
 
     photoNumber += 1
     
