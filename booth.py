@@ -8,7 +8,7 @@ import sys
 import time
 import requests
 
-pedalPin = 6
+pedalPin = 3
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pedalPin, GPIO.IN)
 
