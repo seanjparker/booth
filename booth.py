@@ -43,7 +43,10 @@ def takePhotos():
     out.paste(Image.open(img_names[1]), (w + 20, 10))
     out.paste(Image.open(img_names[2]), (10, h + 20))
     out.paste(Image.open(img_names[3]), (w + 20, h + 20))
+
+    out.thumbnail((4512, 3000), Image.ANTIALIAS)
     out.save("out.jpg")
+
     twitter.postPhoto("out.jpg", "#GreatUniHack #GUH18")
     
 
