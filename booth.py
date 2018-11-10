@@ -17,7 +17,7 @@ def main():
         if GPIO.input(pedalPin) == 0:
             print("WOW")
             time.sleep(2)
-            #takePhotos();
+            takePhotos();
 
 def takePhotos():
     print("Taking picture")
