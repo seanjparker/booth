@@ -19,8 +19,9 @@ def main():
             time.sleep(2)
             takePhotos();
 
+photoNumber = 0
 def takePhotos():
-    print("Taking picture")
+    print("Taking picture " + str(photoNumber))
     os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=1.jpg")
     time.sleep(1.5)
 
@@ -33,6 +34,7 @@ def takePhotos():
     os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=4.jpg")
     time.sleep(1.5)
 
+    print("Stitching photos " + str(photoNumber))
     # Get Image size
     img_names = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"]
     w, h = Image.open(img_names[0]).size
@@ -47,7 +49,7 @@ def takePhotos():
     out.thumbnail((1920, 1080), Image.ANTIALIAS)
     out.save("out.jpg")
 
-    twitter.postPhoto("out.jpg", "#GreatUniHack #GUH18")
+    twitter.postPhoto("out.jpg", "#GreatUniHack #GUH18", str(photoNumber))
     
 
 # Main method

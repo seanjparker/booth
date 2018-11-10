@@ -2,7 +2,7 @@ import tweepy
 import os
 import keys
 
-def postPhoto(image, status):
+def postPhoto(image, status, n):
     # OAuth process, using the keys and tokens
     auth = tweepy.OAuthHandler(keys.consumer_key, keys.consumer_secret)
     auth.set_access_token(keys.access_token, keys.access_token_secret)
@@ -16,6 +16,6 @@ def postPhoto(image, status):
     # api.update_status('#GreatUniHack')
 
     # Send the tweet.
-    print("Sending tweet")
+    print("Sending tweet " + n)
     api.update_with_media(image, status)
-    print("uploading")
+    print("Done uploading " + n)
