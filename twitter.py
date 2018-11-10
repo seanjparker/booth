@@ -16,4 +16,6 @@ def postPhoto(image, status):
     # api.update_status('#GreatUniHack')
 
     # Send the tweet.
+    print("Sending tweet")
     api.update_with_media(image, status)
+    print("uploading")
