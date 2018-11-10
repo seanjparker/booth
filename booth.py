@@ -55,6 +55,7 @@ def takePhotos():
     out.thumbnail((1920, 1080), Image.ANTIALIAS)
     out.save("out.jpg")
 
+    print("Push thread " + n)
     thread = Thread(target = send, args = (n, ))
     thread.start()
 
