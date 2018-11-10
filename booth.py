@@ -18,7 +18,7 @@ def main():
         if GPIO.input(pedalPin) == 0:
             print("WOW")
             time.sleep(2)
-            takePhotos();
+            takePhotos()
 
 def send(n):
     twitter.postPhoto("out.jpg", "#GreatUniHack #GUH18", n)
