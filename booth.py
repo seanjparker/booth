@@ -15,7 +15,7 @@ GPIO.setup(pedalPin, GPIO.IN)
 
 def main():
     while True:
-        time.sleep(0.2)
+        sleep(0.2)
         if GPIO.input(pedalPin) == 0:
             print("WOW")
             time.sleep(2)
