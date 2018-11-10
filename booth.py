@@ -44,7 +44,7 @@ def takePhotos():
     out.paste(Image.open(img_names[2]), (10, h + 20))
     out.paste(Image.open(img_names[3]), (w + 20, h + 20))
     out.save("out.jpg")
-    twitter.postPhoto("out.png", "#GreatUniHack #GUH18")
+    twitter.postPhoto("out.jpg", "#GreatUniHack #GUH18")
     
 
 # Main method
