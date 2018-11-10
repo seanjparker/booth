@@ -25,6 +25,7 @@ def send(n):
 
 photoNumber = 0
 def takePhotos():
+    global photoNumber
     n = str(photoNumber)
     print("Taking picture " + n)
     os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=1.jpg")
