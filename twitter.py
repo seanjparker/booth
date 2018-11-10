@@ -13,7 +13,7 @@ def postPhoto(image, status):
     user = api.me()
 
     # Sample method, used to update a status
-    api.update_status('#StudentHack')
+    api.update_status('#GreatUniHack')
 
     # Send the tweet.
     api.update_with_media(image, status)
