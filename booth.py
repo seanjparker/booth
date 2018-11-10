@@ -21,16 +21,16 @@ def main():
 
 def takePhotos():
     print("Taking picture")
-    os.system("gphoto2 --capture-image-and-download --filename=1.jpg")
+    os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=1.jpg")
     time.sleep(4)
 
-    os.system("gphoto2 --capture-image-and-download --filename=2.jpg")
+    os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=2.jpg")
     time.sleep(4)
 
-    os.system("gphoto2 --capture-image-and-download --filename=3.jpg")
+    os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=3.jpg")
     time.sleep(4)
 
-    os.system("gphoto2 --capture-image-and-download --filename=4.jpg")
+    os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=4.jpg")
     time.sleep(4)
 
     # Get Image size
