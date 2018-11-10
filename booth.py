@@ -15,12 +15,12 @@ GPIO.setup(pedalPin, GPIO.IN)
 def main():
     while True:
         if GPIO.input(pedalPin) == 0:
-            print "WOW"
+            print("WOW")
             time.sleep(2)
             #takePhotos();
 
 def takePhotos():
-    print "Taking pitsure"
+    print("Taking picture")
     os.system("gphoto2 --capture-image-and-download --filename=1.jpg")
     time.sleep(4)
 
