@@ -1,32 +1,28 @@
 import os
-from PIL import Image
-from random import shuffle
-import twitter
-from threading import Thread
-import RPi.GPIO as GPIO
-import json
-import sys
 import time
-import requests
+from random import shuffle
+
+import RPi.GPIO as GPIO
+from PIL import Image
+
+import twitter
 
 pedalPin = 2
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(pedalPin, GPIO.IN)
 
-def main():
-    while True:
-        if GPIO.input(pedalPin) == 0:
-            print("WOW")
-            time.sleep(2)
-            takePhotos()
 
 def send(n):
+    print("Sending ")
     twitter.postPhoto("out.jpg", "#GreatUniHack #GUH18", n)
 
-photoNumber = 0
-def takePhotos():
-    global photoNumber
-    n = str(photoNumber)
+
+photo_number = 0
+
+
+def take_photos():
+    global photo_number
+    n = str(photo_number)
     print("Taking picture " + n)
     os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=1.jpg")
     time.sleep(1.5)
@@ -40,7 +36,7 @@ def takePhotos():
     os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=4.jpg")
     time.sleep(1.5)
 
-    print("Stitching photos " + n)
+    print("Stitching photos: " + n)
     # Get Image size
     img_names = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"]
     w, h = Image.open(img_names[0]).size
@@ -61,9 +57,12 @@ def takePhotos():
 
     send(n)
 
-    photoNumber += 1
-    
+    photo_number += 1
+
+
+GPIO.add_event_detect(pedalPin, GPIO.FALLING, callback=take_photos, bouncetime=300)
 
 # Main method
 if __name__ == "__main__":
-    main()
+    while True:
+        time.sleep(300)
