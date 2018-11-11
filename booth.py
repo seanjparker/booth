@@ -28,21 +28,11 @@ def takePhotos():
     global photoNumber
     n = str(photoNumber)
     print("Taking picture " + n)
-    os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=1.jpg")
-    time.sleep(1.5)
-
-    os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=2.jpg")
-    time.sleep(1.5)
-
-    os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=3.jpg")
-    time.sleep(1.5)
-
-    os.system("gphoto2 --capture-image-and-download --force-overwrite --filename=4.jpg")
-    time.sleep(1.5)
+    os.system("gphoto2 --capture-image-and-download --force-overwrite -F 4 -I 2")
 
     print("Stitching photos " + n)
     # Get Image size
-    img_names = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"]
+    img_names = ["capt0000.jpg", "capt0001.jpg", "capt0002.jpg", "capt0003.jpg"]
     w, h = Image.open(img_names[0]).size
     out = Image.new("RGB", (2 * w + 30, 2 * h + 30), "white")
 
