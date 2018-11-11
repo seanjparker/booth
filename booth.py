@@ -8,6 +8,7 @@ import json
 import sys
 import time
 import requests
+import subprocess
 
 pedalPin = 2
 GPIO.setmode(GPIO.BCM)
@@ -20,17 +21,21 @@ def main():
             time.sleep(2)
             takePhotos();
 
+def cowsay(str):
+    subprocess.call(['cowsay', str])
+
 def send(n):
-    twitter.postPhoto("out.jpg", "#GreatUniHack #GUH18", n)
+    twitter.postPhoto(cowsay, "out.jpg", "#GreatUniHack #GUH18", n)
+
 
 photoNumber = 0
 def takePhotos():
     global photoNumber
-    n = str(photoNumber)
-    print("Taking picture " + n)
+    n = str(photoNumber) + " "
+    cowsay(n + "Taking picture ")
     os.system("gphoto2 --capture-image-and-download --force-overwrite -F 4 -I 2")
 
-    print("Stitching photos " + n)
+    cowsay(n + "Stitching photos")
     # Get Image size
     img_names = ["capt0000.jpg", "capt0001.jpg", "capt0002.jpg", "capt0003.jpg"]
     w, h = Image.open(img_names[0]).size

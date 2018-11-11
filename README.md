@@ -8,6 +8,7 @@
     - `apt install libjpeg-dev`
     - some python deps should be in reqs.txt, including `pip install pillow`
     - `apt install gphoto2`
+    - `apt install cowsay` (used for informational purposes)
 - Error: "Unable to mount device"
     - This happens because when you plug in your camera, gphoto2 mounts the device so you can copy the images!
     - `ps aux | grep gphoto2` should show stuff, other than grep ofc
