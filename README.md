@@ -1,4 +1,6 @@
 # booth
+Used at GreatUniHack 2018.
+
 
 # Development
 
