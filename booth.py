@@ -17,15 +17,14 @@ GPIO.setup(pedalPin, GPIO.IN)
 def main():
     while True:
         if GPIO.input(pedalPin) == 0:
-            print("WOW")
             time.sleep(2)
-            takePhotos();
+            takePhotos()
 
 def cowsay(str):
     subprocess.call(['cowsay', str])
 
 def send(n):
-    twitter.postPhoto(cowsay, "out.jpg", "#GreatUniHack #GUH18", n)
+    twitter.postPhoto(cowsay, "out.jpg", "#guh19", "#greatunihack2019", n)
 
 
 photoNumber = 0
@@ -33,11 +32,11 @@ def takePhotos():
     global photoNumber
     n = str(photoNumber) + " "
     cowsay(n + "Taking picture ")
-    os.system("gphoto2 --capture-image-and-download --force-overwrite -F 4 -I 2")
+    os.system("gphoto2 --capture-image --force-overwrite -F 4 -I 2 && sleep 1 && gphoto2 --get-all-files && sleep 1 && gphoto2 --delete-all-files --folder '/store_00010001/DCIM/100D3200'")
 
     cowsay(n + "Stitching photos")
     # Get Image size
-    img_names = ["capt0000.jpg", "capt0001.jpg", "capt0002.jpg", "capt0003.jpg"]
+    img_names = ["DSC_0001.JPG", "DSC_0002.JPG", "DSC_0003.JPG", "DSC_0004.JPG"]
     w, h = Image.open(img_names[0]).size
     out = Image.new("RGB", (2 * w + 30, 2 * h + 30), "white")
 
