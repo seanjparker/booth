@@ -38,7 +38,7 @@ def takePhotos():
     # Get Image size
     img_names = []
     for i in range(1, 5):
-        img_names.append("DSC_000{}.JPG".format(photoNumber * 4 + i))
+        img_names.append("DSC_{:0>4}.JPG".format(photoNumber * 4 + i))
     # img_names = ["DSC_0001.JPG", "DSC_0002.JPG", "DSC_0003.JPG", "DSC_0004.JPG"]
     w, h = Image.open(img_names[0]).size
     out = Image.new("RGB", (2 * w + 30, 2 * h + 30), "white")
