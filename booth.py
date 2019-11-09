@@ -59,7 +59,9 @@ def takePhotos():
     send(n)
 
     photoNumber += 1
-    
+
+    # Finally, remove all the captured images
+    os.system("rm {}".format(', '.join(img_names)))
 
 # Main method
 if __name__ == "__main__":
